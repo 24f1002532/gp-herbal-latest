@@ -1,0 +1,19 @@
+services:
+  - type: web
+    name: gp-herbal
+    runtime: static
+    buildCommand: npm ci && npm run build
+    staticPublishPath: ./out
+    autoDeploy: true
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: NEXT_PUBLIC_SITE_URL
+        value: https://gp-herbal.onrender.com
+    headers:
+      - path: /_next/static/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /images/*
+        name: Cache-Control
+        value: public, max-age=86400
