@@ -57,29 +57,34 @@ function Awning() {
 }
 
 export default function Hero() {
-  const cats = publishedCategories().slice(0, 6);
+  const cats = publishedCategories();
   const tilt = ["-rotate-2", "rotate-2", "rotate-1", "-rotate-1"];
   return (
     <section className="grid-paper relative overflow-hidden">
-      <div className="mx-auto max-w-6xl px-4 pt-14 pb-20 md:pt-20 md:pb-24 grid md:grid-cols-2 gap-12 items-center">
+      <div className="mx-auto max-w-6xl px-4 pt-10 pb-16 sm:pt-14 md:pt-20 md:pb-24 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
         {/* words */}
-        <div className="relative">
-          <h1 className="font-display font-light text-5xl sm:text-6xl lg:text-7xl text-brick leading-[1.05]">
-          <span className="font-script text-leaf text-6xl sm:text-7xl lg:text-8xl align-baseline">Herbal</span> essentials for every day
+        <div className="relative text-center md:text-left">
+          <p className="inline-flex items-center gap-3 text-[.72rem] sm:text-sm font-semibold uppercase tracking-[.22em] text-olive">
+          </p>
+          <h1 className="mt-4 font-display font-light text-[2.6rem] sm:text-6xl lg:text-7xl text-brick leading-[1.05]">
+            <span className="relative inline-block font-script text-leaf text-[3.4rem] sm:text-7xl lg:text-8xl align-baseline">
+              Herbal
+              <svg viewBox="0 0 120 10" preserveAspectRatio="none" className="absolute left-1 right-0 -bottom-1 h-2.5 w-full text-blush" aria-hidden><path d="M2 6q15-7 29 0t29 0t29 0t29 0" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" /></svg>
+            </span>{" "}essentials for <span className="italic text-olive">every day</span>
           </h1>
           <Arrow className="hidden md:block w-40 mt-4 ml-24" />
-          <div className="mt-7 flex flex-wrap gap-3">
-            <Link href="/products/" className="btn btn-olive">Explore the range <ArrowRight size={18} aria-hidden /></Link>
-            <Link href="/our-story/" className="btn btn-line">Our story</Link>
+          <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-3.5">
+            <Link href="/products/" className="btn btn-olive btn-lg group !pr-2.5">Explore the range <span className="grid h-9 w-9 place-items-center rounded-full bg-cream/20 transition-transform duration-300 group-hover:translate-x-1"><ArrowRight size={18} aria-hidden /></span></Link>
+            <Link href="/our-story/" className="btn btn-line btn-lg">Our story</Link>
           </div>
         </div>
 
         {/* the stall */}
-        <div className="relative mx-auto w-full max-w-md">
-          <Hibiscus className="float absolute -top-8 -right-4 w-20 z-10" />
-          <Leaf className="sway absolute -top-4 left-2 w-16 z-10 -rotate-12" />
-          <Rice className="sway absolute -bottom-6 -left-6 w-14 z-10" />
-          <Leaf c="#C58971" className="float absolute bottom-10 -right-6 w-14 z-10 rotate-45" />
+        <div className="relative mx-auto w-full max-w-[22rem] sm:max-w-md px-1">
+          <Hibiscus className="float absolute -top-7 -right-1 sm:-right-4 w-16 sm:w-20 z-10" />
+          <Leaf className="sway absolute -top-4 left-2 w-12 sm:w-16 z-10 -rotate-12" />
+          <Rice className="sway absolute -bottom-6 -left-1 sm:-left-6 w-11 sm:w-14 z-10" />
+          <Leaf c="#C58971" className="float absolute bottom-10 -right-1 sm:-right-6 w-10 sm:w-14 z-10 rotate-45" />
           <div className="spin-slow absolute -left-10 top-1/3 z-20 hidden sm:block w-24 h-24" aria-hidden>
             <svg viewBox="0 0 100 100"><defs><path id="c" d="M50 50m-37 0a37 37 0 1 1 74 0a37 37 0 1 1-74 0" /></defs>
               <circle cx="50" cy="50" r="48" fill="#4C651E" />
@@ -88,14 +93,14 @@ export default function Hero() {
           </div>
 
           <Awning />
-          <div className="-mt-1 bg-white/70 border-x-4 border-b-4 border-brown rounded-b-[2rem] px-5 pt-5 pb-6">
+          <div className="-mt-1 bg-white/70 border-x-4 border-b-4 border-brown rounded-b-[2rem] px-3 sm:px-5 pt-5 pb-6">
             <p className="text-center text-xs font-semibold tracking-[.2em] uppercase text-olive mb-4">Pick a window</p>
-            <ul className="grid grid-cols-3 gap-3">
+            <ul className="grid grid-cols-3 gap-2.5 sm:gap-3">
               {cats.map((c, i) => (
                 <li key={c.slug} className={tilt[i % 4]}>
                   <Link href={`/products/${c.slug}/`} className="group block text-center">
                     <div className="wavy aspect-square transition-transform group-hover:scale-105 group-hover:rotate-3"><Art alt="" tone={c.tone} slug={c.slug} /></div>
-                    <span className="mt-2 block font-display text-sm sm:text-base leading-tight text-brown group-hover:text-leaf">{c.name}</span>
+                    <span className="mt-2 block font-display text-[.8rem] sm:text-base leading-tight text-brown group-hover:text-leaf">{c.name}</span>
                   </Link>
                 </li>
               ))}

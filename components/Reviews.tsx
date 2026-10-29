@@ -17,7 +17,7 @@ function Note({ r, i }: { r: Review; i: number }) {
   const st = styles[i % styles.length];
   const light = st.box.includes("text-cream");
   return (
-    <figure className={`${st.box} ${st.extra} relative p-6 pt-9 shadow-[4px_6px_0_rgba(96,49,43,.18)] transition-transform duration-300 hover:rotate-0 hover:-translate-y-1`}>
+    <figure className={`${st.box} ${st.extra} relative p-5 pt-9 sm:p-6 sm:pt-9 shadow-[4px_6px_0_rgba(96,49,43,.18)] transition-transform duration-300 hover:rotate-0 hover:-translate-y-1`}>
       <span aria-hidden className={`font-script text-6xl leading-none absolute top-1 left-3 ${light ? "text-cream/60" : "text-coral"}`}>“</span>
       <blockquote className="font-display italic text-[1.08rem] leading-snug">{r.quote}</blockquote>
       <figcaption className="mt-4 text-sm">
@@ -32,7 +32,7 @@ function Note({ r, i }: { r: Review; i: number }) {
 /** One clothesline cell: a segment of string, a peg, and whatever hangs from it. */
 function Cell({ children, i }: { children: React.ReactNode; i: number }) {
   return (
-    <li className="relative px-3 pt-8 pb-6" style={{ marginTop: [0, 18, 6][i % 3] }}>
+    <li className={`relative px-3 pt-8 pb-6 ${["sm:mt-0", "sm:mt-[18px]", "sm:mt-1.5"][i % 3]}`}>
       <span aria-hidden className="absolute left-0 right-0 top-3 border-t-2 border-brown/50" />
       <span aria-hidden className="absolute top-0 left-1/2 -translate-x-1/2 w-3.5 h-10 rounded-sm bg-terra border-2 border-brown z-10" />
       <span aria-hidden className="absolute top-2 left-1/2 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-brown z-20" />
@@ -49,7 +49,7 @@ export default function Reviews() {
   const list = getReviews();
   const first = list.slice(0, 6), more = list.slice(6);
   return (
-    <section aria-labelledby="reviews-h" className="relative bg-beige/40 py-16 mt-6 overflow-hidden">
+    <section aria-labelledby="reviews-h" className="relative bg-beige/40 py-12 md:py-16 mt-6 overflow-hidden">
       {/* a few hearts drifting about */}
       <Heart className="float absolute left-[4%] top-12 w-8 hidden sm:block" />
       <Heart className="float absolute right-[5%] top-40 w-6 hidden sm:block [animation-delay:-2s]" c="#FA9EAD" />
@@ -58,8 +58,8 @@ export default function Reviews() {
 
       <div className="mx-auto max-w-6xl px-4 relative">
         <p className="text-leaf text-sm font-semibold text-center">Customer notes</p>
-        <h2 id="reviews-h" className="font-display text-4xl md:text-5xl text-brick text-center mt-2">
-          kind reviews, <span className="font-script text-leaf text-5xl md:text-6xl">w've got.</span>
+        <h2 id="reviews-h" className="font-display text-[2rem] sm:text-4xl md:text-5xl text-brick text-center mt-2 leading-tight">
+          kind reviews, <span className="font-script text-leaf text-[2.6rem] md:text-6xl">we've got.</span>
         </h2>
         <p className="mt-3 text-center max-w-md mx-auto text-ink/80">Straight from our WhatsApp inbox.</p>
 
@@ -70,7 +70,8 @@ export default function Reviews() {
             <path d="M50 38C60 32 68 40 62 49C58 55 50 60 50 62C50 60 42 55 38 49C32 40 40 32 50 38Z" fill="#FA9EAD" /></svg>
         </div>
 
-        <ul className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 items-start">{first.map((r, i) => <Cell key={r.id} i={i}><Note r={r} i={i} /></Cell>)}</ul>
+        <ul className="swipe-row mt-8 md:mt-10 sm:grid-cols-2 lg:grid-cols-3 items-start">{first.map((r, i) => <Cell key={r.id} i={i}><Note r={r} i={i} /></Cell>)}</ul>
+        <p className="sm:hidden mt-1 text-center text-sm text-ink/60" aria-hidden>← swipe to read more notes →</p>
 
         {more.length > 0 && (
           <details className="group mt-2">
@@ -78,7 +79,7 @@ export default function Reviews() {
               <span className="group-open:hidden">Hang up {more.length} more notes</span>
               <span className="hidden group-open:inline">Tuck the extra notes away</span>
             </summary>
-            <ul className="mt-6 grid sm:grid-cols-2 lg:grid-cols-3 items-start">{more.map((r, i) => <Cell key={r.id} i={i}><Note r={r} i={i + 6} /></Cell>)}</ul>
+            <ul className="swipe-row mt-6 sm:grid-cols-2 lg:grid-cols-3 items-start">{more.map((r, i) => <Cell key={r.id} i={i}><Note r={r} i={i + 6} /></Cell>)}</ul>
           </details>
         )}
       </div>
