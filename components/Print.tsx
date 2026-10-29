@@ -15,12 +15,12 @@ export function PrintBody({ s, sizes, playing }: { s: Shot; sizes: string; playi
           <Image src={s.src} alt={s.alt} width={s.w} height={s.h} sizes={sizes} className="block w-full h-auto" />
           {s.video && (
             <span aria-hidden className="absolute inset-0 grid place-items-center">
-              <span className="grid place-items-center w-16 h-16 rounded-full bg-cream/90 text-brown shadow-lg"><svg viewBox="0 0 24 24" className="w-7 h-7 ml-1"><path d="M7 4l13 8-13 8z" fill="currentColor" /></svg></span>
+              <span className="grid place-items-center w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-cream/90 text-brown shadow-lg"><svg viewBox="0 0 24 24" className="w-7 h-7 ml-1"><path d="M7 4l13 8-13 8z" fill="currentColor" /></svg></span>
             </span>
           )}
         </div>
       )}
-      <figcaption className="pt-3 pb-1 px-1 font-display italic text-brown text-[1.05rem] leading-snug">{s.caption}</figcaption>
+      <figcaption className="pt-2.5 pb-1 px-0.5 font-display italic text-brown text-[.88rem] sm:text-[1.05rem] leading-snug">{s.caption}</figcaption>
     </>
   );
 }

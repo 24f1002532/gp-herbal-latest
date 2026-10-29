@@ -1,9 +1,18 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { X, ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { shots } from "@/lib/gallery";
-import { PrintBody, Tape, tiltFor } from "./Print";
+
+/* Every photo is cut into its own shape, with a colour block peeking out behind it. The shapes and colours repeat in a loop. */
+const frames = [
+  { shape: "rounded-t-[999px] rounded-b-[1.5rem]", aspect: "aspect-[4/5]", back: "bg-blush" },
+  { shape: "rounded-full", aspect: "aspect-square", back: "bg-sun/80" },
+  { shape: "rounded-[2.5rem_6rem_2.5rem_6rem]", aspect: "aspect-[4/5]", back: "bg-olive/50" },
+  { shape: "rounded-[999px]", aspect: "aspect-[3/4]", back: "bg-coral/60" },
+  { shape: "rounded-[2rem]", aspect: "aspect-[5/4]", back: "bg-terra/50" },
+  { shape: "rounded-b-[999px] rounded-t-[1.5rem]", aspect: "aspect-[4/5]", back: "bg-leaf/40" },
+] as const;
 
 export default function GalleryWall() {
   const [open, setOpen] = useState<number | null>(null);
@@ -31,17 +40,27 @@ export default function GalleryWall() {
 
   return (
     <>
-      <ul className="columns-2 lg:columns-3 gap-5 sm:gap-8 [&>li]:mb-6 sm:[&>li]:mb-10 [&>li]:break-inside-avoid">
-        {shots.map((s, i) => (
-          <li key={s.id} className={`${tiltFor(i)} hover:rotate-0 transition-transform duration-300`}>
-            <button type="button" onClick={(e) => { opener.current = e.currentTarget; setOpen(i); }}
-              className="relative block w-full text-left bg-white p-2.5 pb-3 sm:p-3.5 rounded-sm shadow-[0_14px_26px_-12px_rgba(96,49,43,.5)] border border-brown/10"
-              aria-label={`Open photo: ${s.caption}`}>
-              <Tape c={s.tape} i={i} />
-              <figure><PrintBody s={s} sizes="(max-width: 1024px) 46vw, 380px" /></figure>
-            </button>
-          </li>
-        ))}
+      <ul className="columns-2 lg:columns-3 gap-x-7 sm:gap-x-12 [&>li]:mb-12 sm:[&>li]:mb-16 [&>li]:break-inside-avoid">
+        {shots.map((sh, i) => {
+          const f = frames[i % frames.length];
+          return (
+            <li key={sh.id} className={i % 2 ? "sm:pt-6" : ""}>
+              <button type="button" onClick={(e) => { opener.current = e.currentTarget; setOpen(i); }} aria-label={`Open ${sh.video ? "video" : "photo"}: ${sh.caption}`}
+                className="group relative block w-full text-left">
+                <span aria-hidden className={`absolute inset-0 translate-x-2.5 translate-y-2.5 sm:translate-x-4 sm:translate-y-4 transition-transform duration-500 group-hover:translate-x-1 group-hover:translate-y-1 ${f.shape} ${f.back}`} />
+                <span className={`relative block overflow-hidden border-[3px] border-cream shadow-[0_16px_24px_-14px_rgba(96,49,43,.6)] transition-transform duration-500 group-hover:-translate-x-1 group-hover:-translate-y-1 ${f.aspect} ${f.shape}`}>
+                  <Image src={sh.src} alt={sh.alt} fill sizes="(max-width: 1024px) 46vw, 340px" className="object-cover transition-transform duration-700 group-hover:scale-110" />
+                  {sh.video && (
+                    <span aria-hidden className="absolute inset-0 grid place-items-center bg-ink/10">
+                      <span className="grid h-12 w-12 sm:h-16 sm:w-16 place-items-center rounded-full bg-cream/95 text-brown shadow-lg transition-transform duration-300 group-hover:scale-110"><Play className="ml-1" size={26} fill="currentColor" /></span>
+                    </span>
+                  )}
+                  <span aria-hidden className="absolute inset-x-3 bottom-4 hidden rounded-full bg-cream/95 px-3 py-1.5 text-center font-display text-[.9rem] italic leading-tight text-brown opacity-0 shadow translate-y-2 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100 md:block">{sh.caption}</span>
+                </span>
+              </button>
+            </li>
+          );
+        })}
       </ul>
 
       <dialog ref={dlg} onClose={() => setOpen(null)} onClick={(e) => { if (e.target === dlg.current) close(); }}

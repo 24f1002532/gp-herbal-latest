@@ -11,12 +11,12 @@ const faqs = [
 ];
 export default function FAQ() {
   return (
-    <div className="mx-auto max-w-3xl px-4 py-14">
-      <h1 className="font-display text-5xl text-brown">Questions, answered</h1>
-      <div className="mt-8 space-y-3">
+    <div className="mx-auto max-w-3xl px-4 py-10 md:py-14">
+      <h1 className="font-display text-[2.2rem] sm:text-5xl text-brown">Questions, answered</h1>
+      <div className="mt-6 md:mt-8 space-y-3">
         {faqs.map(([q, a]) => (
           <details key={q} className="border-2 border-beige rounded-2xl p-4 open:bg-blush/20">
-            <summary className="cursor-pointer font-semibold text-brown">{q}</summary>
+            <summary className="cursor-pointer font-semibold text-brown py-1 min-h-11 flex items-center">{q}</summary>
             <p className="mt-2">{a}</p>
           </details>
         ))}

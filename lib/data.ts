@@ -83,7 +83,7 @@ const rawProducts: Raw[] = [
     benefits: ["Helps fight acne and pimples", "Helps reduce rashes and skin irritation", "Deep cleanses and detoxifies", "Soothes itching and inflammation", "Supports body-odour control and summer care"],
     usage: ["Wet skin with water.", "Rub the soap gently on skin and lather.", "Rinse thoroughly and pat dry."],
     goodFor: "Oily, dry, sensitive and acne-prone skin. Gentle enough for the whole family." }),
-  P({ slug: "rice-soap", name: "Rice Soap", categorySlug: "soaps", bestSeller: true, kind: "photo", image: "/images/products/rice-soap.webp",
+  P({ slug: "rice-soap", name: "Rice Soap", categorySlug: "soaps", kind: "photo", image: "/images/products/rice-soap.webp",
     description: "A cream-white bar that feels like a spoonful of rice milk on your skin.",
     story: "Rice is the quiet hero of every Indian kitchen, so we gave it a bar of its own. It is soft, creamy and gentle, the kind of soap you can use every single day without thinking twice. We make it in small butterfly-shaped batches and let it set slowly.",
     ingredients: [
@@ -116,7 +116,7 @@ const rawProducts: Raw[] = [
     benefits: ["Helps fade dark spots", "Helps even out skin tone", "Helps reduce pigmentation"],
     usage: ["Wet skin with water.", "Rub the soap gently over the area and lather.", "Rinse thoroughly and pat dry. Use daily for steady results."],
     goodFor: "Uneven skin tone and dark spots" }),
-  P({ slug: "fitkari-soap", name: "Fitkari (Alum) Soap", categorySlug: "soaps", bestSeller: true, kind: "photo", image: "/images/products/fitkari-soap.webp",
+  P({ slug: "fitkari-soap", name: "Fitkari (Alum) Soap", categorySlug: "soaps", kind: "photo", image: "/images/products/fitkari-soap.webp",
     description: "Oval bars with fitkari, the old-fashioned way to feel fresh and clean.",
     story: "Fitkari (alum) was in every grandmother's bathroom for a reason. We set it into glycerine with a few herbal powders, so you get that crisp, tight, just-washed feeling without the harshness. Great for the face, great for the body, and especially good in summer.",
     ingredients: [
@@ -218,7 +218,7 @@ const rawProducts: Raw[] = [
     caution: "Keep away from the eyes and do not scrub hard on sensitive skin." }),
 
   /* ---------------------------- FACIAL KITS ---------------------------- */
-  P({ slug: "vitamin-c-facial-kit", name: "Vitamin C Facial Kit", categorySlug: "facial-kits", bestSeller: true, kind: "photo", image: "/images/products/vitamin-c-facial-kit.webp",
+  P({ slug: "vitamin-c-facial-kit", name: "Vitamin C Facial Kit", categorySlug: "facial-kits", kind: "photo", image: "/images/products/vitamin-c-facial-kit.webp",
     description: "Five jars in sunny orange tones, a whole salon facial for your own bathroom.",
     story: "Cleanser, scrub, cream, gel and mask: the five steps of a proper facial, lined up in order so you never have to guess. The kit is built around vitamin C from orange and is all about leaving your skin looking fresh and bright. Put on your favourite song and take your time.",
     ingredients: [
@@ -297,7 +297,7 @@ const rawProducts: Raw[] = [
     usage: ["Cleanse your face.", "Take a small amount of cream.", "Apply evenly on face and neck in the morning."],
     goodFor: "All skin types. Paraben free, cruelty free and free of harmful chemicals.",
     caution: "Do a small patch test first if you have very sensitive skin." }),
-  P({ slug: "organic-bleach", name: "Homemade Organic Bleach", categorySlug: "creams", bestSeller: true, kind: "photo", image: "/images/products/organic-bleach.webp",
+  P({ slug: "organic-bleach", name: "Homemade Organic Bleach", categorySlug: "creams", kind: "photo", image: "/images/products/organic-bleach.webp",
     description: "A homemade cream-and-powder set that gets your skin ready for its glow.",
     story: "Mix the cream with the little blue sachet of activator and you have a homemade bleach to use before a facial. It lifts tan and leaves skin feeling clean and bright. It is made for monthly use, so it is a treat rather than an everyday product.",
     ingredients: [
@@ -434,7 +434,7 @@ const rawProducts: Raw[] = [
   shampoo("7-in-1-herbal-shampoo", "7-in-1 Herbal Shampoo", "#F4DDB0", "Our all-rounder, seven herbs in one amber bottle.",
     "Amla, shikakai, bhringraj, hibiscus, fenugreek, neem and aloe vera all in a single bottle. If you only want to try one of our shampoos, start here. It is warm amber in colour and very much the \"everything\" shampoo.",
     [{ name: "Amla", role: "Adds shine" }, { name: "Shikakai", role: "Gently cleanses the scalp" }, { name: "Bhringraj", role: "Strengthens hair" }, { name: "Hibiscus", role: "Conditions" }, { name: "Fenugreek", role: "Nourishes" }, { name: "Neem", role: "Keeps the scalp fresh" }, { name: "Aloe vera", role: "Soothes and hydrates" }],
-    ["Cleanses gently", "Nourishes hair and scalp", "Adds shine and softness"], true),
+    ["Cleanses gently", "Nourishes hair and scalp", "Adds shine and softness"]),
   shampoo("aloe-vera-neem-shampoo", "Aloe Vera Neem Shampoo", "#DCEBB0", "Cool and green, aloe vera and neem for a fresh scalp.",
     "This is our \"deep breath\" shampoo. Aloe soothes and hydrates, neem keeps the scalp fresh, and together they turn wash day into something cooling and calm.",
     [{ name: "Aloe vera", role: "Soothes and hydrates the scalp" }, { name: "Neem", role: "Keeps the scalp clean and fresh" }],

@@ -3,6 +3,7 @@ import { Fraunces, DM_Sans, Pinyon_Script } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import Interactions from "@/components/Interactions";
 import { BRAND } from "@/lib/config";
 
 const fraunces = Fraunces({ subsets: ["latin"], variable: "--font-fraunces", display: "swap" });
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${fraunces.variable} ${dm.variable} ${pinyon.variable}`}>
-      <body><Header /><main id="main">{children}</main><Footer /></body>
+      <body><Header /><main id="main">{children}</main><Footer /><Interactions /></body>
     </html>
   );
 }

@@ -87,7 +87,7 @@ export default function Pantry({ float = false }: { float?: boolean }) {
    `show` hides an item below that breakpoint where it would sit on the text. */
 export type Placement = { n: string; lm: string; tm?: string; bm?: string; l?: string; t?: string; b?: string; show?: "md" | "xl"; size?: "sm" | "md" };
 
-export function Floaters({ spots, label }: { spots: Placement[]; label: string }) {
+export function Floaters({ spots, label, compact = false }: { spots: Placement[]; label: string; compact?: boolean }) {
   return (
     <ul className="pointer-events-none absolute inset-0 z-10" aria-label={label}>
       {spots.map((s) => {
@@ -100,10 +100,10 @@ export function Floaters({ spots, label }: { spots: Placement[]; label: string }
           <li key={s.n} className={`fl pointer-events-auto ${s.show === "md" ? "hidden md:block" : s.show === "xl" ? "hidden xl:block" : ""}`} style={vars}>
             <div className="pantry-item pantry-float">
               <div className="pantry-sticker relative flex flex-col items-center">
-                <span className={`grid place-items-center rounded-full border-[3px] border-white shadow-[0_8px_14px_-6px_rgba(96,49,43,.45)] ${s.size === "sm" ? "w-14 h-14 xl:w-[4.5rem] xl:h-[4.5rem]" : "w-16 h-16 xl:w-20 xl:h-20"}`} style={{ backgroundColor: it.bg }}>
+                <span className={`grid place-items-center rounded-full border-white shadow-[0_8px_14px_-6px_rgba(96,49,43,.45)] ${compact ? "h-7 w-7 border-2" : `border-[3px] ${s.size === "sm" ? "w-10 h-10 xl:w-12 xl:h-12" : "w-11 h-11 xl:w-14 xl:h-14"}`}`} style={{ backgroundColor: it.bg }}>
                   <svg viewBox="0 0 48 48" className="w-[78%] h-[78%]" aria-hidden>{art[it.n]}</svg>
                 </span>
-                <span className="-mt-3 whitespace-nowrap rounded-full bg-white px-2 py-0.5 text-[.72rem] xl:text-[.8rem] font-semibold text-brown shadow-sm">{it.n}</span>
+                <span className={`whitespace-nowrap rounded-full bg-white py-0.5 font-semibold text-brown shadow-sm ${compact ? "sr-only" : "-mt-2.5 px-1.5 text-[.62rem] xl:text-[.68rem]"}`}>{it.n}</span>
               </div>
             </div>
           </li>

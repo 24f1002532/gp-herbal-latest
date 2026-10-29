@@ -6,3 +6,11 @@ export const BRAND = {
   siteUrl: process.env.NEXT_PUBLIC_SITE_URL ?? "",
 };
 export const WHATSAPP_NUMBER = "917508005860";
+export const CUSTOMER_CARE = {
+  name: "Isha Setia",
+  role: "Owner & customer care",
+  email: "gpherbal_isha@gmail.com",
+  phone: "7508005860",
+  phoneDisplay: "+91 75080 05860",
+  phoneHref: "tel:+917508005860",
+};
